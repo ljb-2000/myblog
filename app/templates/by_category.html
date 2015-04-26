@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+
+{% block paginatebar %}
+<!--分页条-->
+<ul class="pagination">
+{% if pagenation.has_prev %}
+    <li><a href="{{ url_for('main.by_category',_method='GET',id=id, p = pagenation.page-1) }}">Prev</a> </li>
+    {% endif %}
+
+
+{% for page in pagenation.iter_pages() %}
+    {% if page %}
+        {% if page != pagenation.page %}
+        <li><a href="{{ url_for('main.by_category',_method='GET', p = page,id=id) }}">{{ page }}</a> </li>
+            {% else %}
+        <li><a href="{{ url_for('main.by_category',_method='GET', p = page,id=id) }}">#</a> </li>
+            {% endif %}
+    {% endif %}
+{% endfor %}
+
+
+{% if pagenation.has_next %}
+    <li><a href="{{ url_for('main.by_category',_method='GET',id=id, p = pagenation.page + 1) }}">Next</a> </li>
+{% endif %}
+</ul>
+{% endblock %}

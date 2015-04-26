@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+{{ super() }}
+    <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block rightbody %}
+
+            <h1 style="margin-top: 25px;margin-bottom:0px;color: #555"><strong>{{ post.title }}</strong></h1>
+            <h4 style="margin-top: 0px;margin-bottom:2px;color: #555"><small>1,234 views</small></h4>
+            <h4 style="margin: 0px;"><small>{{ moment(post.modify_date).format('MMMM D, YYYY') }}</small></h4>
+
+            <div style="padding-top: 30px;padding-bottom: 30px;padding-right: 50px">
+                {{ post.body |safe }}
+            </div>
+
+            <div class="jiathis_style" style="padding-top: 20px">
+                <span style="float: left;line-height: 18px!important;font-size: 14px">分享到:&nbsp;</span>
+                <a class="jiathis_button_qzone"></a>
+                <a class="jiathis_button_tsina"></a>
+                <a class="jiathis_button_tqq"></a>
+                <a class="jiathis_button_weixin"></a>
+                <a class="jiathis_button_renren"></a>
+                <a class="jiathis_button_xiaoyou"></a>
+                <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                <a class="jiathis_counter_style"></a>
+            </div>
+
+{% endblock %}
+

@@ -1,0 +1,13 @@
+{% extends admin_base_template %}
+{% block access_control %}
+{%  if current_user.is_authenticated() %}
+    <a href="{{ url_for('admin.logout') }}" class="btn navbar-btn navbar-right">logout</a>
+    {% else %}
+    <a href="{{ url_for('admin.login') }}" class="btn navbar-btn navbar-right">login</a>
+    {% endif %}
+{% endblock %}
+
+{% block tail %}
+{{ super() }}
+    <script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script>
+{% endblock %}

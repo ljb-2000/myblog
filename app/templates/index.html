@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block postlist %}
+    {% for p in posts %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a style="color: #080808;text-decoration: none" href="{{ url_for('main.article',id=p.id) }}"><p class="lead"><strong>{{ p.title }}</strong></p></a>
+                {{ p.body |truncate(200,True)|safe }}
+            </div>
+            <div class="panel-footer">
+                {{ moment(p.modify_date).format('MMMM D, YYYY') }}  - 2 Comment
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+{% endblock %}
